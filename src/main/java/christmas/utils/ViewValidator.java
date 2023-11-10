@@ -2,6 +2,7 @@ package christmas.utils;
 
 import static christmas.constant.ValidateErrorMessage.INVALID_DATE;
 import static christmas.constant.ValidateErrorMessage.INVALID_ORDER;
+import static christmas.constant.ValidateErrorMessage.NOT_NULL;
 
 import java.util.Arrays;
 
@@ -9,12 +10,12 @@ import java.util.Arrays;
 public class ViewValidator {
 
     public void validateReadDate(String input) {
-        checkInputIsNotNull(input, INVALID_DATE);
+        checkInputIsNotNull(input, NOT_NULL);
         checkOnlyNumber(input, INVALID_DATE);
     }
 
     public void validateReadMenuOrder(String input) {
-        checkInputIsNotNull(input, INVALID_ORDER);
+        checkInputIsNotNull(input, NOT_NULL);
         validateSplitMenuItems(input);
     }
 
