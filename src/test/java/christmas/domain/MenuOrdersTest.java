@@ -46,22 +46,31 @@ public class MenuOrdersTest {
     }
 
     @DisplayName("주문 총합이 20을 초과한 경우")
-    @ValueSource(strings = {"타파스-5,양송이수프-5,바비큐립-10,초코케이크-1","타파스-5,양송이수프-5,바비큐립-10,초코케이크-2"})
+    @ValueSource(strings = {"타파스-5,양송이수프-5,바비큐립-10,초코케이크-1", "타파스-5,양송이수프-5,바비큐립-10,초코케이크-2"})
     @ParameterizedTest
-    void 최대_주문_개수_초과(String input){
-        assertThrows(IllegalArgumentException.class, ()->{
+    void 최대_주문_개수_초과(String input) {
+        assertThrows(IllegalArgumentException.class, () -> {
             new MenuOrders(input);
         });
     }
 
     @DisplayName("주문 총합 20 경곗값 테스트")
     @Test
-    void 주문_총합_경곗값_테스트(){
+    void 주문_총합_경곗값_테스트() {
         assertDoesNotThrow(() -> {
             String input = "타파스-5,양송이수프-5,바비큐립-10";
             new MenuOrders(input);
         });
     }
 
+    @DisplayName("총 주문 금액 테스트")
+    @Test
 
+    void 주문_금액_테스트(){
+        String input = "제로콜라-1,초코케이크-1,양송이수프-2";
+        MenuOrders menuOrders = new MenuOrders(input);
+
+        int totalPrice = menuOrders.calculateTotalPrice();
+        assertThat(totalPrice).isEqualTo(30000);
+    }
 }

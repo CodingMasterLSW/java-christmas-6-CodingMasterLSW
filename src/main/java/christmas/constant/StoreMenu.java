@@ -1,5 +1,7 @@
 package christmas.constant;
 
+import java.util.Arrays;
+
 public enum StoreMenu {
 
     APPETIZER_MENU(new String[]{"양송이수프", "타파스", "시저샐러드"}, new int[]{6_000, 5_500, 8_000}),
@@ -16,13 +18,32 @@ public enum StoreMenu {
         this.prices = prices;
     }
 
+    public static int getPriceOf(String menuName) {
+        StoreMenu category = findCategoryOfMenu(menuName);
+        return category.getPriceForMenu(menuName);
+    }
+
+    private static StoreMenu findCategoryOfMenu(String menuName) {
+        for (StoreMenu category : StoreMenu.values()) {
+            if (Arrays.asList(category.storeMenus).contains(menuName)) {
+                return category;
+            }
+        }
+        return null;
+    }
+
+    private int getPriceForMenu(String menuName) {
+        for (int i = 0; i < this.storeMenus.length; i++) {
+            if (this.storeMenus[i].equals(menuName)) {
+                return this.prices[i];
+            }
+        }
+        return 0;
+    }
+
 
     public String[] getStoreMenus() {
         return storeMenus;
-    }
-
-    public int[] getPrices() {
-        return prices;
     }
 
 }

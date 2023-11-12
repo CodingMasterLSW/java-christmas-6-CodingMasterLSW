@@ -1,8 +1,6 @@
 package christmas.domain;
 
 
-import christmas.utils.DomainValidator;
-
 public class MenuOrder {
 
     private final String menu;
@@ -13,6 +11,7 @@ public class MenuOrder {
         this.quantity = quantity;
 
     }
+
 
     public String getMenu() {
         return menu;
