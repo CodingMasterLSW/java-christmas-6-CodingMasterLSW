@@ -55,13 +55,13 @@ public class DayOfWeekEvent {
 
 
     private void findMainMenu(MenuOrder order) {
-        if (Arrays.asList(MAIN_MENU).contains(order)) {
+        if (Arrays.asList(MAIN_MENU.getStoreMenus()).contains(order.getMenu())) {
             count += order.getQuantity();
         }
     }
 
     private void findDessertMenu(MenuOrder order) {
-        if (Arrays.asList(DESSERT_MENU).contains(order)) {
+        if (Arrays.asList(DESSERT_MENU.getStoreMenus()).contains(order.getMenu())) {
             count += order.getQuantity();
         }
     }

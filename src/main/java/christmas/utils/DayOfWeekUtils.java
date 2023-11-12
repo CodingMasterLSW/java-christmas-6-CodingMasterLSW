@@ -11,7 +11,7 @@ public class DayOfWeekUtils {
     public static boolean isWeekend(int visitDate) {
         LocalDate date = LocalDate.of(YEAR, MONTH, visitDate);
         DayOfWeek dayOfWeek = date.getDayOfWeek();
-        return dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY;
+        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 
 
