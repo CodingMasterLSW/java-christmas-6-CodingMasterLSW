@@ -73,4 +73,5 @@ public class MenuOrdersTest {
         int totalPrice = menuOrders.calculateTotalPrice();
         assertThat(totalPrice).isEqualTo(30000);
     }
+
 }
