@@ -1,13 +1,13 @@
-package christmas.domain;
+package christmas.domain.discount;
 
-public class ChristmasDiscount {
+public class ChristmasEvent {
 
     private final static int ChristmasDiscountRate = 100;
     private final static int CHRISTMAS_DISCOUNT_START_DATE = 1;
     private final static int CHRISTMAS_DISCOUNT_END_DATE = 25;
     private int christmasDiscountPrice;
 
-    public ChristmasDiscount(int visitDate) {
+    public ChristmasEvent(int visitDate) {
         this.christmasDiscountPrice = notDiscountPeriod(visitDate);
     }
 
@@ -36,3 +36,4 @@ public class ChristmasDiscount {
     }
 
 }
+

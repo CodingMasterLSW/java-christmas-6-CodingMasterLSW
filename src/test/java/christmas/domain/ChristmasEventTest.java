@@ -2,13 +2,14 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.discount.ChristmasEvent;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class ChristmasDiscountTest {
+public class ChristmasEventTest {
 
 
 
@@ -16,8 +17,8 @@ public class ChristmasDiscountTest {
     @ParameterizedTest
     @MethodSource("provideDatesAndExpectedDiscounts")
     void 하루_지날수록_100원씩_증가(int visitDate, int expectedDiscount) {
-        ChristmasDiscount christmasDiscount = new ChristmasDiscount(visitDate);
-        int christmasDiscountPrice = christmasDiscount.getChristmasDiscountPrice();
+        ChristmasEvent christmasEvent = new ChristmasEvent(visitDate);
+        int christmasDiscountPrice = christmasEvent.getChristmasDiscountPrice();
         assertThat(christmasDiscountPrice).isEqualTo(expectedDiscount);
     }
 
