@@ -3,6 +3,7 @@ package christmas.domain.discount;
 import static christmas.constant.StoreMenu.DESSERT_MENU;
 import static christmas.constant.StoreMenu.MAIN_MENU;
 
+import christmas.domain.MenuOrder;
 import christmas.utils.DayOfWeekUtils;
 import java.util.Arrays;
 import java.util.List;
@@ -14,54 +15,54 @@ public class DayOfWeekEvent {
     private int totalDayDiscount;
     private DayOfWeekUtils dayOfWeekUtils = new DayOfWeekUtils();
 
-    public DayOfWeekEvent(int visitDate, List<String> menus) {
+    public DayOfWeekEvent(int visitDate, List<MenuOrder> menuOrders) {
         this.totalDayDiscount = 0;
-        applyDiscount(visitDate, menus);
+        applyDiscount(visitDate, menuOrders);
     }
 
-    private void applyDiscount(int visitDate, List<String> menus) {
-        weekendDiscount(visitDate, menus);
-        weekdayDiscount(visitDate, menus);
+    private void applyDiscount(int visitDate, List<MenuOrder> menuOrders) {
+        weekendDiscount(visitDate, menuOrders);
+        weekdayDiscount(visitDate, menuOrders);
     }
 
-    private void weekendDiscount(int visitDate, List<String> menus) {
+    private void weekendDiscount(int visitDate, List<MenuOrder> menuOrders) {
         if (DayOfWeekUtils.isWeekend(visitDate)) {
             count = 0;
-            findAllContainsMainMenu(menus);
+            findAllContainsMainMenu(menuOrders);
             totalDayDiscount += calculateWeekendDiscount();
         }
     }
 
-    private void weekdayDiscount(int visitDate, List<String> menus) {
+    private void weekdayDiscount(int visitDate, List<MenuOrder> menuOrders) {
         if (!DayOfWeekUtils.isWeekend(visitDate)) {
             count = 0;
-            findAllContainsDessertMenu(menus);
+            findAllContainsDessertMenu(menuOrders);
             totalDayDiscount += calculateWeekendDiscount();
         }
     }
 
-    private void findAllContainsMainMenu(List<String> menus) {
-        for (String menuName : menus) {
-            findMainMenu(menuName);
+    private void findAllContainsMainMenu(List<MenuOrder> menuOrders) {
+        for (MenuOrder order : menuOrders) {
+            findMainMenu(order);
         }
     }
 
-    private void findAllContainsDessertMenu(List<String> menus) {
-        for (String menuName : menus) {
-            findDessertMenu(menuName);
+    private void findAllContainsDessertMenu(List<MenuOrder> menuOrders) {
+        for (MenuOrder order : menuOrders) {
+            findDessertMenu(order);
         }
     }
 
 
-    private void findMainMenu(String menuName) {
-        if (Arrays.asList(MAIN_MENU).contains(menuName)) {
-            count += 1;
+    private void findMainMenu(MenuOrder order) {
+        if (Arrays.asList(MAIN_MENU).contains(order)) {
+            count += order.getQuantity();
         }
     }
 
-    private void findDessertMenu(String menuName) {
-        if (Arrays.asList(DESSERT_MENU).contains(menuName)) {
-            count += 1;
+    private void findDessertMenu(MenuOrder order) {
+        if (Arrays.asList(DESSERT_MENU).contains(order)) {
+            count += order.getQuantity();
         }
     }
 
