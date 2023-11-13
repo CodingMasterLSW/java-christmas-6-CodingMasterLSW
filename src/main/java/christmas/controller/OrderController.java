@@ -18,6 +18,7 @@ public class OrderController {
     public void start() {
         inputView.startMessage();
         inputValidator.checkReadDate();
+        inputValidator.checkReadMenuOrder();
     }
 
 }

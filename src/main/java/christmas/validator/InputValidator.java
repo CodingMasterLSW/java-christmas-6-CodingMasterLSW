@@ -1,5 +1,6 @@
 package christmas.validator;
 
+import christmas.domain.MenuOrders;
 import christmas.domain.VisitDate;
 import christmas.view.InputView;
 
@@ -23,11 +24,12 @@ public class InputValidator {
         }
     }
 
-    public String checkReadMenuOrder(){
+    public MenuOrders checkReadMenuOrder(){
         while (true){
             try{
                 String input = inputView.readMenuOrder();
-                return input;
+                MenuOrders menuOrders = new MenuOrders(input);
+                return menuOrders;
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
