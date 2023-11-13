@@ -27,4 +27,5 @@ public class GiftMenuTest {
                 Arguments.of(120000, "샴페인", 25000, 1)
         );
     }
+
 }
