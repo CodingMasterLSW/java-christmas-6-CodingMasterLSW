@@ -16,6 +16,7 @@ public class AllDiscountCalculate {
     private DateOfStarsEvent dateOfStarsEvent;
 
     public AllDiscountCalculate(int visitDate, int totalPrice, List<MenuOrder> menuOrders) {
+
         initializeEvents(visitDate, menuOrders);
         minimumDiscountConditions(totalPrice, visitDate);
     }
