@@ -16,7 +16,7 @@ public class OrderController {
     }
 
     public void start() {
-        inputView.startMessage();
+        inputView.printStartMessage();
         inputValidator.checkReadDate();
         inputValidator.checkReadMenuOrder();
     }

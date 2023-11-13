@@ -10,29 +10,36 @@ public class InputView {
     ViewValidator viewValidator = new ViewValidator();
 
     public String readDate() {
-        System.out.println(VISIT_DATE_MESSAGE);
+        printVisitDateMessage();
         String input = userInput();
         viewValidator.validateReadDate(input);
         return input;
     }
 
-    public void startMessage(){
-        System.out.println(START_MESSAGE);
-    }
 
-    public String readMenuOrder(){
-        System.out.println(ORDER_MESSAGE);
+    public String readMenuOrder() {
+        printOrderMessage();
         String input = userInput();
         viewValidator.validateReadMenuOrder(input);
         return input;
     }
 
-
-    private String userInput(){
+    private String userInput() {
         return Console.readLine();
     }
 
+    public void printStartMessage() {
+        String message = String.format(START_MESSAGE, SETTING_MONTH);
+        System.out.println(message);
+    }
 
+    private void printOrderMessage() {
+        System.out.println(ORDER_MESSAGE);
+    }
 
+    private void printVisitDateMessage() {
+        String message = String.format(VISIT_DATE_MESSAGE, SETTING_MONTH);
+        System.out.println(message);
+    }
 
 }
