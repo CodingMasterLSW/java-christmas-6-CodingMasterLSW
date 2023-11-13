@@ -16,11 +16,14 @@ public class AllDiscountCalculate {
     private DateOfStarsEvent dateOfStarsEvent;
 
     public AllDiscountCalculate(int visitDate, int totalPrice, List<MenuOrder> menuOrders) {
-        this.allDiscountPrice = 0;
+        initializeEvents(visitDate, menuOrders);
+        minimumDiscountConditions(totalPrice, visitDate);
+    }
+
+    private void initializeEvents(int visitDate, List<MenuOrder> menuOrders){
         this.christmasEvent = new ChristmasEvent(visitDate);
         this.dayOfWeekEvent = new DayOfWeekEvent(visitDate, menuOrders);
         this.dateOfStarsEvent = new DateOfStarsEvent(visitDate);
-        minimumDiscountConditions(totalPrice, visitDate);
     }
 
     private void minimumDiscountConditions(int totalPrice, int visitDate) {
