@@ -1,5 +1,6 @@
 package christmas.validator;
 
+import christmas.domain.VisitDate;
 import christmas.view.InputView;
 
 public class InputValidator {
@@ -10,16 +11,18 @@ public class InputValidator {
         this.inputView = inputView;
     }
 
-    public String checkReadDate() {
+    public int checkReadDate() {
         while (true) {
             try {
                 String input = inputView.readDate();
-                return input;
+                VisitDate visitDate = new VisitDate(input);
+                return visitDate.getVisitDate();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
+
     public String checkReadMenuOrder(){
         while (true){
             try{

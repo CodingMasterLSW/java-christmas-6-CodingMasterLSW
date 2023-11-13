@@ -16,6 +16,10 @@ public class InputView {
         return input;
     }
 
+    public void startMessage(){
+        System.out.println(START_MESSAGE);
+    }
+
     public String readMenuOrder(){
         System.out.println(ORDER_MESSAGE);
         String input = userInput();

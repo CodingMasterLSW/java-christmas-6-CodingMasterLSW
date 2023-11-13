@@ -65,13 +65,13 @@ public class MenuOrdersTest {
 
     @DisplayName("총 주문 금액 테스트")
     @Test
-
-    void 주문_금액_테스트(){
+    void 주문_금액_테스트() {
         String input = "제로콜라-1,초코케이크-1,양송이수프-2";
         MenuOrders menuOrders = new MenuOrders(input);
 
         int totalPrice = menuOrders.calculateTotalPrice();
         assertThat(totalPrice).isEqualTo(30000);
     }
+
 
 }
