@@ -27,11 +27,20 @@ public class OrderController {
         outputView.printVisitDateWithNewLine(visitDate);
 
         printMenuOrderSummary();
+        displayTotalPriceBeforeDiscount();
+
     }
 
     private void printMenuOrderSummary() {
         outputView.printMenuOrderMessage();
         printAllMenuOrders();
+        outputView.printNewLine();
+    }
+
+    private void displayTotalPriceBeforeDiscount(){
+        int totalPrice = menuOrders.calculateTotalPrice();
+        outputView.printBeforeDiscountPrice(totalPrice);
+        outputView.printNewLine();
     }
 
     private void printAllMenuOrders() {
