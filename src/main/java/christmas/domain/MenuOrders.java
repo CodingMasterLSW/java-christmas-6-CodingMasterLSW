@@ -3,6 +3,7 @@ package christmas.domain;
 import christmas.constant.StoreMenu;
 import christmas.utils.DomainValidator;
 import christmas.utils.MenuOrderParser;
+import christmas.view.OutputView;
 import java.util.List;
 
 public class MenuOrders {
@@ -24,6 +25,9 @@ public class MenuOrders {
             totalPrice += price * order.getQuantity();
         }
         return totalPrice;
+    }
+    public List<MenuOrder> getMenuOrders(){
+        return menuOrders;
     }
 
 }

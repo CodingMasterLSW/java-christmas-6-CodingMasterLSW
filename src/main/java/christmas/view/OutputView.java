@@ -15,6 +15,16 @@ public class OutputView {
         System.out.println(message);
     }
 
+    public void printMenuOrderMessage(){
+        System.out.println(MENU_ORDER_OUTPUT);
+
+    }
+
+    public void printSingleMenuOrder(String menuName, int quantity){
+        String formattedOrder = String.format(ORDER_FORMAT, menuName, quantity);
+        System.out.println(formattedOrder);
+    }
+
     public void printNewLine(){
         System.out.println();
     }
