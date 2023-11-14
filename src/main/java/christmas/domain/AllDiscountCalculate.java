@@ -10,7 +10,10 @@ public class AllDiscountCalculate {
     private static final int CHRISTMAS_DATE = 25;
     private static final int MINIMUM_DISCOUNT_CONDITIONS = 10000;
     private int allDiscountPrice;
-
+    private int christmasDatePrice;
+    private int dayOfWeekendPrice;
+    private int dayOfWeekdayPrice;
+    private int specialPrice;
     private ChristmasEvent christmasEvent;
     private DayOfWeekEvent dayOfWeekEvent;
     private DateOfStarsEvent dateOfStarsEvent;
@@ -35,13 +38,30 @@ public class AllDiscountCalculate {
 
     private void calculateDiscounts(int visitDate) {
         if (visitDate <= CHRISTMAS_DATE) {
-            allDiscountPrice += christmasEvent.getChristmasDiscountPrice();
+            christmasDatePrice += christmasEvent.getChristmasDiscountPrice();
         }
-        allDiscountPrice += dateOfStarsEvent.getTotalDiscount();
-        allDiscountPrice += dayOfWeekEvent.getWeekDayDiscount();
-        allDiscountPrice += dayOfWeekEvent.getWeekendDiscount();
+        specialPrice += dateOfStarsEvent.getTotalDiscount();
+        dayOfWeekdayPrice += dayOfWeekEvent.getWeekDayDiscount();
+        dayOfWeekendPrice += dayOfWeekEvent.getWeekendDiscount();
+        allDiscountPrice =
+                christmasDatePrice + specialPrice + dayOfWeekdayPrice + dayOfWeekendPrice;
     }
 
+    public int getSpecialPrice() {
+        return specialPrice;
+    }
+
+    public int getChristmasDatePrice() {
+        return christmasDatePrice;
+    }
+
+    public int getDayOfWeekdayPrice() {
+        return dayOfWeekdayPrice;
+    }
+
+    public int getDayOfWeekendPrice() {
+        return dayOfWeekendPrice;
+    }
 
     public int getAllDiscountPrice() {
         return allDiscountPrice;

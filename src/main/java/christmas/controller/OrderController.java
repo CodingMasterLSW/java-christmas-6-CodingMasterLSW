@@ -2,6 +2,7 @@ package christmas.controller;
 
 import static christmas.constant.OutputViewMessage.*;
 
+import christmas.domain.AllDiscountCalculate;
 import christmas.domain.GiftMenu;
 import christmas.domain.MenuOrder;
 import christmas.domain.MenuOrders;
@@ -19,9 +20,7 @@ public class OrderController {
     private OutputView outputView;
     private MenuOrders menuOrders;
     private GiftMenu giftMenu;
-    private ChristmasEvent christmasDiscount;
-    private DateOfStarsEvent dateOfStarsEvent;
-    private DayOfWeekEvent dayOfWeekEvent;
+    private AllDiscountCalculate allDiscountCalculate;
 
     public OrderController() {
         this.inputView = new InputView();
@@ -41,9 +40,9 @@ public class OrderController {
         this.giftMenu = new GiftMenu(menuOrders.calculateTotalPrice());
         printGiftMenu(giftMenu.getName(), giftMenu.getQuantity());
 
-        this.christmasDiscount = new ChristmasEvent(visitDate);
-        this.dateOfStarsEvent = new DateOfStarsEvent(visitDate);
-        this.dayOfWeekEvent = new DayOfWeekEvent(visitDate, menuOrders.getMenuOrders());
+        int totalPrice = menuOrders.calculateTotalPrice();
+        this.allDiscountCalculate = new AllDiscountCalculate(visitDate, totalPrice,
+                menuOrders.getMenuOrders());
 
         calculateAndPrintDiscounts();
 
@@ -86,10 +85,10 @@ public class OrderController {
     }
 
     private boolean checkDiscounts() {
-        return isDiscountAvailable(christmasDiscount.getChristmasDiscountPrice()) ||
-                isDiscountAvailable(dayOfWeekEvent.getWeekDayDiscount()) ||
-                isDiscountAvailable(dayOfWeekEvent.getWeekendDiscount()) ||
-                isDiscountAvailable(dateOfStarsEvent.getTotalDiscount()) ||
+        return isDiscountAvailable(allDiscountCalculate.getChristmasDatePrice()) ||
+                isDiscountAvailable(allDiscountCalculate.getDayOfWeekdayPrice()) ||
+                isDiscountAvailable(allDiscountCalculate.getDayOfWeekdayPrice()) ||
+                isDiscountAvailable(allDiscountCalculate.getSpecialPrice()) ||
                 isDiscountAvailable(giftMenu.getPrice());
     }
 
@@ -99,10 +98,10 @@ public class OrderController {
 
     private void printDiscountDetails() {
         printIfDiscountAvailable(CHRISTMAS_DATE_DISCOUNT,
-                christmasDiscount.getChristmasDiscountPrice());
-        printIfDiscountAvailable(WEEKDAY_DISCOUNT, dayOfWeekEvent.getWeekDayDiscount());
-        printIfDiscountAvailable(WEEKEND_DISCOUNT, dayOfWeekEvent.getWeekendDiscount());
-        printIfDiscountAvailable(SPECIAL_DISCOUNT, dateOfStarsEvent.getTotalDiscount());
+                allDiscountCalculate.getChristmasDatePrice());
+        printIfDiscountAvailable(WEEKDAY_DISCOUNT, allDiscountCalculate.getDayOfWeekdayPrice());
+        printIfDiscountAvailable(WEEKEND_DISCOUNT, allDiscountCalculate.getDayOfWeekendPrice());
+        printIfDiscountAvailable(SPECIAL_DISCOUNT, allDiscountCalculate.getSpecialPrice());
         printIfDiscountAvailable(GIFT_MENU_DISCOUNT, giftMenu.getPrice());
     }
 
