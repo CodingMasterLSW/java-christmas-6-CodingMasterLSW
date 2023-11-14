@@ -14,7 +14,8 @@ public class AllBenefitTest {
     @DisplayName("증정품이 있는 총혜택금액 계산")
     @Test
     void 증정품_존재하는_총_혜택금액_계산() {
-        int visitDate = 3;
+        String input = "3";
+        VisitDate visitDate = new VisitDate(input);
         int totalPrice = 186000;
         menuOrders = Arrays.asList(
                 new MenuOrder("티본스테이크", 1),

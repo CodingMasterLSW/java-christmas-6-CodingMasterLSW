@@ -7,7 +7,7 @@ public class ApplyDiscount {
     private final AllDiscountCalculate allDiscountCalculate;
     private int applyDiscountPrice;
 
-    public ApplyDiscount(int visitDate, MenuOrders menuOrders) {
+    public ApplyDiscount(VisitDate visitDate, MenuOrders menuOrders) {
         this.menuOrders = menuOrders;
         int totalPrice = menuOrders.calculateTotalPrice();
         this.allDiscountCalculate = new AllDiscountCalculate(visitDate, totalPrice, menuOrders.getMenuOrders());

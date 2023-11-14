@@ -12,12 +12,11 @@ public class InputValidator {
         this.inputView = inputView;
     }
 
-    public int validateVisitDate() {
+    public VisitDate validateVisitDate() {
         while (true) {
             try {
                 String input = inputView.readDate();
-                VisitDate visitDate = new VisitDate(input);
-                return visitDate.getVisitDate();
+                return new VisitDate(input);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

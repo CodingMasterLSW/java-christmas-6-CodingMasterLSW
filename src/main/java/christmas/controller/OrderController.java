@@ -8,6 +8,7 @@ import christmas.domain.ApplyDiscount;
 import christmas.domain.GiftMenu;
 import christmas.domain.MenuOrder;
 import christmas.domain.MenuOrders;
+import christmas.domain.VisitDate;
 import christmas.validator.InputValidator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -31,7 +32,7 @@ public class OrderController {
 
     public void start() {
         inputView.printStartMessage();
-        int visitDate = inputValidator.validateVisitDate();
+        VisitDate visitDate = inputValidator.validateVisitDate();
         this.menuOrders = inputValidator.validateMenuOrders();
         outputView.printVisitDateWithMonth(visitDate);
 

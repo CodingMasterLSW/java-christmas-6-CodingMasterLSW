@@ -4,6 +4,7 @@ import static christmas.constant.StoreMenu.DESSERT_MENU;
 import static christmas.constant.StoreMenu.MAIN_MENU;
 
 import christmas.domain.MenuOrder;
+import christmas.domain.VisitDate;
 import christmas.utils.DayOfWeekUtils;
 import java.util.Arrays;
 import java.util.List;
@@ -16,18 +17,18 @@ public class DayOfWeekEvent {
     private int weekendDiscount;
     private DayOfWeekUtils dayOfWeekUtils = new DayOfWeekUtils();
 
-    public DayOfWeekEvent(int visitDate, List<MenuOrder> menuOrders) {
+    public DayOfWeekEvent(VisitDate visitDate, List<MenuOrder> menuOrders) {
         this.weekDayDiscount = 0;
         this.weekendDiscount = 0;
         applyDiscount(visitDate, menuOrders);
     }
 
-    private void applyDiscount(int visitDate, List<MenuOrder> menuOrders) {
+    private void applyDiscount(VisitDate visitDate, List<MenuOrder> menuOrders) {
         weekendDiscount(visitDate, menuOrders);
         weekdayDiscount(visitDate, menuOrders);
     }
 
-    private void weekendDiscount(int visitDate, List<MenuOrder> menuOrders) {
+    private void weekendDiscount(VisitDate visitDate, List<MenuOrder> menuOrders) {
         if (DayOfWeekUtils.isWeekend(visitDate)) {
             count = 0;
             findAllContainsMainMenu(menuOrders);
@@ -35,7 +36,7 @@ public class DayOfWeekEvent {
         }
     }
 
-    private void weekdayDiscount(int visitDate, List<MenuOrder> menuOrders) {
+    private void weekdayDiscount(VisitDate visitDate, List<MenuOrder> menuOrders) {
         if (!DayOfWeekUtils.isWeekend(visitDate)) {
             count = 0;
             findAllContainsDessertMenu(menuOrders);

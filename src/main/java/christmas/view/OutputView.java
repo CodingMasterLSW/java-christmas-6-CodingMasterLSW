@@ -3,14 +3,16 @@ package christmas.view;
 import static christmas.constant.InputViewMessage.*;
 import static christmas.constant.OutputViewMessage.*;
 
+import christmas.domain.VisitDate;
+
 public class OutputView {
 
-    public void printVisitDateWithMonth(int visitDate) {
+    public void printVisitDateWithMonth(VisitDate visitDate) {
         printVisitDate(visitDate);
         printNewLine();
     }
 
-    private void printVisitDate(int visitDate) {
+    private void printVisitDate(VisitDate visitDate) {
         String message = String.format(VISIT_DATE_MESSAGE_OUTPUT, SETTING_MONTH, visitDate);
         System.out.println(message);
     }

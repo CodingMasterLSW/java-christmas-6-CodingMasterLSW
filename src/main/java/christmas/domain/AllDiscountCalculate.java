@@ -18,26 +18,26 @@ public class AllDiscountCalculate {
     private DayOfWeekEvent dayOfWeekEvent;
     private DateOfStarsEvent dateOfStarsEvent;
 
-    public AllDiscountCalculate(int visitDate, int totalPrice, List<MenuOrder> menuOrders) {
+    public AllDiscountCalculate(VisitDate visitDate, int totalPrice, List<MenuOrder> menuOrders) {
 
         initializeEvents(visitDate, menuOrders);
         minimumDiscountConditions(totalPrice, visitDate);
     }
 
-    private void initializeEvents(int visitDate, List<MenuOrder> menuOrders) {
+    private void initializeEvents(VisitDate visitDate, List<MenuOrder> menuOrders) {
         this.christmasEvent = new ChristmasEvent(visitDate);
         this.dayOfWeekEvent = new DayOfWeekEvent(visitDate, menuOrders);
         this.dateOfStarsEvent = new DateOfStarsEvent(visitDate);
     }
 
-    private void minimumDiscountConditions(int totalPrice, int visitDate) {
+    private void minimumDiscountConditions(int totalPrice, VisitDate visitDate) {
         if (totalPrice >= MINIMUM_DISCOUNT_CONDITIONS) {
             calculateDiscounts(visitDate);
         }
     }
 
-    private void calculateDiscounts(int visitDate) {
-        if (visitDate <= CHRISTMAS_DATE) {
+    private void calculateDiscounts(VisitDate visitDate) {
+        if (visitDate.getVisitDate() <= CHRISTMAS_DATE) {
             christmasDatePrice += christmasEvent.getChristmasDiscountPrice();
         }
         specialPrice += dateOfStarsEvent.getTotalDiscount();

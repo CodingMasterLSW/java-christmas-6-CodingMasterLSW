@@ -1,5 +1,7 @@
 package christmas.domain.discount;
 
+import christmas.domain.VisitDate;
+
 public class ChristmasEvent {
 
     private final static int ChristmasDiscountRate = 100;
@@ -7,11 +9,11 @@ public class ChristmasEvent {
     private final static int CHRISTMAS_DISCOUNT_END_DATE = 25;
     private int christmasDiscountPrice;
 
-    public ChristmasEvent(int visitDate) {
+    public ChristmasEvent(VisitDate visitDate) {
         this.christmasDiscountPrice = notDiscountPeriod(visitDate);
     }
 
-    private int notDiscountPeriod(int visitDate) {
+    private int notDiscountPeriod(VisitDate visitDate) {
         christmasDiscountPrice = 0;
         if (isDiscountPeriod(visitDate)) {
             calculateChristmasDiscount(visitDate);
@@ -19,14 +21,14 @@ public class ChristmasEvent {
         return christmasDiscountPrice;
     }
 
-    private boolean isDiscountPeriod(int visitDate) {
-        return visitDate >= CHRISTMAS_DISCOUNT_START_DATE
-                && visitDate <= CHRISTMAS_DISCOUNT_END_DATE;
+    private boolean isDiscountPeriod(VisitDate visitDate) {
+        return visitDate.getVisitDate() >= CHRISTMAS_DISCOUNT_START_DATE
+                && visitDate.getVisitDate() <= CHRISTMAS_DISCOUNT_END_DATE;
     }
 
-    private void calculateChristmasDiscount(int visitDate) {
+    private void calculateChristmasDiscount(VisitDate visitDate) {
         christmasDiscountPrice = 1000;
-        for (int i = 1; i < visitDate; i++) {
+        for (int i = 1; i < visitDate.getVisitDate(); i++) {
             christmasDiscountPrice += ChristmasDiscountRate;
         }
     }

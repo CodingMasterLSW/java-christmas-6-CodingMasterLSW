@@ -6,13 +6,13 @@ public class AllBenefit {
 
     private int totalBenefitsPrice;
 
-    AllBenefit(int visitDate, int totalPrice, List<MenuOrder> orders) {
+    AllBenefit(VisitDate visitDate, int totalPrice, List<MenuOrder> orders) {
         this.totalBenefitsPrice = 0;
         calculateDiscounts(visitDate, totalPrice, orders);
         calculateGiftMenu(totalPrice);
     }
 
-    private void calculateDiscounts(int visitDate, int totalPrice, List<MenuOrder> orders) {
+    private void calculateDiscounts(VisitDate visitDate, int totalPrice, List<MenuOrder> orders) {
 
         AllDiscountCalculate allDiscountCalculate = new AllDiscountCalculate(visitDate, totalPrice,
                 orders);
