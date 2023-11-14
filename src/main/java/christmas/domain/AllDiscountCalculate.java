@@ -17,7 +17,6 @@ public class AllDiscountCalculate {
     private ChristmasEvent christmasEvent;
     private DayOfWeekEvent dayOfWeekEvent;
     private DateOfStarsEvent dateOfStarsEvent;
-    private GiftMenu giftMenu;
 
     public AllDiscountCalculate(int visitDate, int totalPrice, List<MenuOrder> menuOrders) {
 

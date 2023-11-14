@@ -9,7 +9,6 @@ public class VisitDate {
 
     DomainValidator domainValidator = new DomainValidator();
 
-
     public VisitDate(String input) {
         int visitDate = convertInteger(input);
         domainValidator.validateVisitDate(visitDate);

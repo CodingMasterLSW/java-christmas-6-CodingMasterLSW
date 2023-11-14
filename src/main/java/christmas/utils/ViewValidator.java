@@ -6,7 +6,6 @@ import static christmas.constant.ValidateErrorMessage.NOT_NULL;
 
 import java.util.Arrays;
 
-
 public class ViewValidator {
 
     public void validateReadDate(String input) {
@@ -40,18 +39,15 @@ public class ViewValidator {
         }
     }
 
-
     private boolean validateFormMenuItem(String inputOrder) {
         String[] parts = inputOrder.split("-");
         return parts.length == 2 && isQuantityValid(parts[1]);
     }
-
 
     private boolean isQuantityValid(String OrderQuantity) {
         checkOnlyNumber(OrderQuantity, INVALID_ORDER);
         int quantity = Integer.parseInt(OrderQuantity);
         return quantity > 0;
     }
-
 
 }

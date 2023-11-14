@@ -55,7 +55,6 @@ public class DayOfWeekEvent {
         }
     }
 
-
     private void findMainMenu(MenuOrder order) {
         if (Arrays.asList(MAIN_MENU.getStoreMenus()).contains(order.getMenu())) {
             count += order.getQuantity();
@@ -75,6 +74,7 @@ public class DayOfWeekEvent {
     public int getWeekDayDiscount() {
         return weekDayDiscount;
     }
+
     public int getWeekendDiscount(){
         return weekendDiscount;
     }

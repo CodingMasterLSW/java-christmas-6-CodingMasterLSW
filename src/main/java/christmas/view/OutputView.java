@@ -3,9 +3,6 @@ package christmas.view;
 import static christmas.constant.InputViewMessage.*;
 import static christmas.constant.OutputViewMessage.*;
 
-import christmas.constant.BenefitsBadge;
-
-
 public class OutputView {
 
     public void printVisitDateWithNewLine(int visitDate) {

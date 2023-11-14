@@ -22,6 +22,4 @@ public class OutputViewMessage {
     public static final String AFTER_DISCOUNT_PAYMENT_PRICE_FORMAT = "%,d원";
     public static final String EVENT_BADGE_MESSAGE = "<%s월 이벤트 배지>";
 
-
-
 }

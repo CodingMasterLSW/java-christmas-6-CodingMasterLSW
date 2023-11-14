@@ -1,7 +1,6 @@
 package christmas.utils;
 
 import christmas.domain.MenuOrder;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +13,5 @@ public class MenuOrderParser {
                 .map(parts -> new MenuOrder(parts[0], Integer.parseInt(parts[1])))
                 .collect(Collectors.toList());
     }
-
 
 }

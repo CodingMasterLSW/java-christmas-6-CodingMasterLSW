@@ -15,7 +15,6 @@ public class DomainValidator {
     private final static int DATE_START_NUM = 1;
     private final static int DATE_END_NUM = 31;
     private final static int MAXIMUM_MENU_QUANTITY = 20;
-
     private final List<String> drinkMenus = Arrays.asList(StoreMenu.DRINK_MENU.getStoreMenus());
 
 
@@ -46,8 +45,6 @@ public class DomainValidator {
         if (distinctMenuCount != menus.size()) {
             throw new IllegalArgumentException(INVALID_ORDER);
         }
-
-
     }
 
     private void validateNoExistMenu(List<MenuOrder> menus) {
@@ -67,23 +64,17 @@ public class DomainValidator {
     private void validateNotOnlyDrink(List<MenuOrder> menus) {
         boolean allDrinks = menus.stream()
                 .allMatch(order -> drinkMenus.contains(order.getMenu()));
-
         if(allDrinks){
             throw new IllegalArgumentException(NOT_ONLY_DRINKS);
         }
-
     }
-
-
 
     private void validateTotalQuantityAmount(List<MenuOrder> menus) {
         long totalQuantity = menus.stream()
                 .mapToInt(MenuOrder::getQuantity)
                 .sum();
-
         if (totalQuantity > MAXIMUM_MENU_QUANTITY) {
             throw new IllegalArgumentException(EXCEED_MAXIMUM_MENU_QUANTITY);
         }
-
     }
 }

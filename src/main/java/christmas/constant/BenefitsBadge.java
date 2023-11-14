@@ -24,6 +24,4 @@ public enum BenefitsBadge {
         }
         return null;
     }
-
-
 }

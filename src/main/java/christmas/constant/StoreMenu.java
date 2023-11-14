@@ -41,7 +41,6 @@ public enum StoreMenu {
         return 0;
     }
 
-
     public String[] getStoreMenus() {
         return storeMenus;
     }

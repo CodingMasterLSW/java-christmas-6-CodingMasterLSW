@@ -14,5 +14,4 @@ public class DayOfWeekUtils {
         return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 
-
 }
