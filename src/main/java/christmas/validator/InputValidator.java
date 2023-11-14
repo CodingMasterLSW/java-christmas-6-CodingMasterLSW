@@ -12,7 +12,7 @@ public class InputValidator {
         this.inputView = inputView;
     }
 
-    public int checkReadDate() {
+    public int validateVisitDate() {
         while (true) {
             try {
                 String input = inputView.readDate();
@@ -24,12 +24,11 @@ public class InputValidator {
         }
     }
 
-    public MenuOrders checkReadMenuOrder(){
+    public MenuOrders validateMenuOrders(){
         while (true){
             try{
                 String input = inputView.readMenuOrder();
-                MenuOrders menuOrders = new MenuOrders(input);
-                return menuOrders;
+                return new MenuOrders(input);
             } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }

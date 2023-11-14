@@ -31,8 +31,8 @@ public class OrderController {
 
     public void start() {
         inputView.printStartMessage();
-        int visitDate = inputValidator.checkReadDate();
-        this.menuOrders = inputValidator.checkReadMenuOrder();
+        int visitDate = inputValidator.validateVisitDate();
+        this.menuOrders = inputValidator.validateMenuOrders();
         outputView.printVisitDateWithMonth(visitDate);
 
         printMenuOrderSummary();
