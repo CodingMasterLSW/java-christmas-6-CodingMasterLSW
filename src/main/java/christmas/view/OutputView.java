@@ -22,11 +22,11 @@ public class OutputView {
     }
 
     public void printSingleMenuOrder(String menuName, int quantity) {
-        String formattedOrder = String.format(ORDER_FORMAT, menuName, quantity);
+        String formattedOrder = String.format(PRINT_FORMAT, menuName, quantity);
         System.out.println(formattedOrder);
     }
 
-    public void printBeforeDiscountPrice(int totalPrice){
+    public void printBeforeDiscountPrice(int totalPrice) {
         beforeDiscountPriceMessage();
         displayTotalPrice(totalPrice);
     }
@@ -35,8 +35,33 @@ public class OutputView {
         System.out.println(ORDER_PRICE_BEFORE_DISCOUNT);
     }
 
-    private void displayTotalPrice(int totalPrice){
+    private void displayTotalPrice(int totalPrice) {
         System.out.println(totalPrice);
+    }
+
+    public void printGiftMenuInformation(String giftName, int quantity) {
+        giftMenuMessage();
+        giftMenuInformation(giftName, quantity);
+        printNewLine();
+    }
+
+    public void printNullGiftMenu(){
+        giftMenuMessage();
+        noExistGiftMenu();
+        printNewLine();
+    }
+
+    private void giftMenuMessage() {
+        System.out.println(GIFT_MENU_MESSAGE);
+    }
+
+    private void giftMenuInformation(String giftName, int quantity) {
+        String message = String.format(PRINT_FORMAT, giftName, quantity);
+        System.out.println(message);
+    }
+
+    private void noExistGiftMenu(){
+        System.out.println(NO_EXIST);
     }
 
     public void printNewLine() {

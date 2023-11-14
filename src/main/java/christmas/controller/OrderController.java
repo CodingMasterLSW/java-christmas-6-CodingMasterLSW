@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.GiftMenu;
 import christmas.domain.MenuOrder;
 import christmas.domain.MenuOrders;
 import christmas.validator.InputValidator;
@@ -12,12 +13,12 @@ public class OrderController {
     private InputView inputView;
     private OutputView outputView;
     private MenuOrders menuOrders;
+    private GiftMenu giftMenu;
 
     public OrderController() {
         this.inputView = new InputView();
         this.inputValidator = new InputValidator(inputView);
         this.outputView = new OutputView();
-
     }
 
     public void start() {
@@ -29,6 +30,9 @@ public class OrderController {
         printMenuOrderSummary();
         displayTotalPriceBeforeDiscount();
 
+        this.giftMenu = new GiftMenu(menuOrders.calculateTotalPrice());
+        printGiftMenu(giftMenu.getName(), giftMenu.getQuantity());
+
     }
 
     private void printMenuOrderSummary() {
@@ -37,7 +41,7 @@ public class OrderController {
         outputView.printNewLine();
     }
 
-    private void displayTotalPriceBeforeDiscount(){
+    private void displayTotalPriceBeforeDiscount() {
         int totalPrice = menuOrders.calculateTotalPrice();
         outputView.printBeforeDiscountPrice(totalPrice);
         outputView.printNewLine();
@@ -48,4 +52,13 @@ public class OrderController {
             outputView.printSingleMenuOrder(order.getMenu(), order.getQuantity());
         }
     }
+
+    private void printGiftMenu(String giftName, int quantity) {
+        if (giftName == null || giftName.isEmpty()) {
+            outputView.printNullGiftMenu();
+            return;
+        }
+        outputView.printGiftMenuInformation(giftName, quantity);
+    }
+
 }
