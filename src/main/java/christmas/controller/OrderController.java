@@ -52,7 +52,7 @@ public class OrderController {
         this.applyDiscount = new ApplyDiscount(visitDate, menuOrders);
         outputView.applyDiscountPriceMessage(applyDiscount.getApplyDiscountPrice());
 
-        BenefitsBadge badge = BenefitsBadge.getBadge(allBenefitsPrice);
+        String badge = BenefitsBadge.getBadge(allBenefitsPrice);
         outputView.printBadgeMessage(badge);
     }
 

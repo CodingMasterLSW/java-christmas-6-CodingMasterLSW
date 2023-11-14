@@ -117,13 +117,13 @@ public class OutputView {
         System.out.println(AFTER_DISCOUNT_PAYMENT_PRICE);
     }
 
-    public void printBadgeMessage(BenefitsBadge benefitsBadge){
+    public void printBadgeMessage(String benefitsBadge){
         badgeMessage();
         getBadgeMessage(benefitsBadge);
         printNewLine();
     }
 
-    private void getBadgeMessage(BenefitsBadge benefitsBadge){
+    private void getBadgeMessage(String benefitsBadge){
         if(benefitsBadge==null){
             System.out.println(NO_EXIST);
             return;
