@@ -92,8 +92,12 @@ public class OutputView {
     }
 
     private void calculateAllBenefitPrice(int allBenefitPrice){
-        String message = String.format(ALL_BENEFIT_PRICE_FORMAT, allBenefitPrice);
-        System.out.println(message);
+        if (allBenefitPrice != 0) {
+            String message = String.format(ALL_BENEFIT_PRICE_FORMAT, allBenefitPrice);
+            System.out.println(message);
+            return;
+        }
+        System.out.println(ALL_BENEFIT_PRICE_ZERO);
     }
 
     public void applyDiscountPriceMessage(int applyDiscount){

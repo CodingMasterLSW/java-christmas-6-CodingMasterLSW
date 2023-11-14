@@ -17,6 +17,7 @@ public class OutputViewMessage {
     public static final String GIFT_MENU_DISCOUNT = "증정 이벤트";
     public static final String ALL_BENEFIT_PRICE = "<총혜택 금액>";
     public static final String ALL_BENEFIT_PRICE_FORMAT = "-%,d원";
+    public static final String ALL_BENEFIT_PRICE_ZERO = "0원";
     public static final String AFTER_DISCOUNT_PAYMENT_PRICE = "<할인 후 예상 결제 금액>";
     public static final String AFTER_DISCOUNT_PAYMENT_PRICE_FORMAT = "%,d원";
 
