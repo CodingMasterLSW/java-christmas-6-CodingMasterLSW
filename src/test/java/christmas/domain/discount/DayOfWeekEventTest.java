@@ -31,7 +31,8 @@ public class DayOfWeekEventTest {
     void 주말_할인_테스트(int visitDate) {
 
         DayOfWeekEvent dayOfWeekEvent = new DayOfWeekEvent(visitDate, menuOrders);
-        assertThat(dayOfWeekEvent.getTotalDiscount()).isEqualTo(12138); // (티본스테이크2, 바비큐립4) * 2023
+        assertThat(dayOfWeekEvent.getWeekendDiscount()).isEqualTo(12138); // (티본스테이크2, 바비큐립4) * 2023
+        assertThat(dayOfWeekEvent.getWeekDayDiscount()).isEqualTo(0);
     }
 
     @DisplayName("평일 할인 테스트")
@@ -39,7 +40,8 @@ public class DayOfWeekEventTest {
     @ParameterizedTest
     void 평일_할인_테스트(int visitDate){
         DayOfWeekEvent dayOfWeekEvent = new DayOfWeekEvent(visitDate, menuOrders);
-        assertThat(dayOfWeekEvent.getTotalDiscount()).isEqualTo(6069); // (초코케이크1, 아이스크림2) * 2023
+        assertThat(dayOfWeekEvent.getWeekDayDiscount()).isEqualTo(6069); // (초코케이크1, 아이스크림2) * 2023
+        assertThat(dayOfWeekEvent.getWeekendDiscount()).isEqualTo(0);
     }
 
 }
