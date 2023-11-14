@@ -3,6 +3,8 @@ package christmas.view;
 import static christmas.constant.InputViewMessage.*;
 import static christmas.constant.OutputViewMessage.*;
 
+import christmas.constant.BenefitsBadge;
+
 
 public class OutputView {
 
@@ -103,6 +105,7 @@ public class OutputView {
     public void applyDiscountPriceMessage(int applyDiscount){
         afterPaymentMessage();
         printAfterPaymentMessage(applyDiscount);
+        printNewLine();
     }
 
     private void printAfterPaymentMessage(int applyDiscount){
@@ -112,6 +115,25 @@ public class OutputView {
 
     private void afterPaymentMessage(){
         System.out.println(AFTER_DISCOUNT_PAYMENT_PRICE);
+    }
+
+    public void printBadgeMessage(BenefitsBadge benefitsBadge){
+        badgeMessage();
+        getBadgeMessage(benefitsBadge);
+        printNewLine();
+    }
+
+    private void getBadgeMessage(BenefitsBadge benefitsBadge){
+        if(benefitsBadge==null){
+            System.out.println(NO_EXIST);
+            return;
+        }
+        System.out.println(benefitsBadge);
+    }
+
+    private void badgeMessage(){
+        String message = String.format(EVENT_BADGE_MESSAGE, SETTING_MONTH);
+        System.out.println(message);
     }
 
 

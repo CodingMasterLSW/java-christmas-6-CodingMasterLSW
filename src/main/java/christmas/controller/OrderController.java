@@ -2,6 +2,7 @@ package christmas.controller;
 
 import static christmas.constant.OutputViewMessage.*;
 
+import christmas.constant.BenefitsBadge;
 import christmas.domain.AllDiscountCalculate;
 import christmas.domain.ApplyDiscount;
 import christmas.domain.GiftMenu;
@@ -20,6 +21,7 @@ public class OrderController {
     private GiftMenu giftMenu;
     private AllDiscountCalculate allDiscountCalculate;
     private ApplyDiscount applyDiscount;
+    private BenefitsBadge benefitsBadge;
 
     public OrderController() {
         this.inputView = new InputView();
@@ -49,6 +51,9 @@ public class OrderController {
 
         this.applyDiscount = new ApplyDiscount(visitDate, menuOrders);
         outputView.applyDiscountPriceMessage(applyDiscount.getApplyDiscountPrice());
+
+        BenefitsBadge badge = BenefitsBadge.getBadge(allBenefitsPrice);
+        outputView.printBadgeMessage(badge);
     }
 
     private void printMenuOrderSummary() {

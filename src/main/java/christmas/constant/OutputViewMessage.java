@@ -20,6 +20,8 @@ public class OutputViewMessage {
     public static final String ALL_BENEFIT_PRICE_ZERO = "0원";
     public static final String AFTER_DISCOUNT_PAYMENT_PRICE = "<할인 후 예상 결제 금액>";
     public static final String AFTER_DISCOUNT_PAYMENT_PRICE_FORMAT = "%,d원";
+    public static final String EVENT_BADGE_MESSAGE = "<%s월 이벤트 배지>";
+
 
 
 }
