@@ -1,8 +1,13 @@
 package christmas.controller;
 
+import static christmas.constant.OutputViewMessage.*;
+
 import christmas.domain.GiftMenu;
 import christmas.domain.MenuOrder;
 import christmas.domain.MenuOrders;
+import christmas.domain.discount.ChristmasEvent;
+import christmas.domain.discount.DateOfStarsEvent;
+import christmas.domain.discount.DayOfWeekEvent;
 import christmas.validator.InputValidator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -14,6 +19,9 @@ public class OrderController {
     private OutputView outputView;
     private MenuOrders menuOrders;
     private GiftMenu giftMenu;
+    private ChristmasEvent christmasDiscount;
+    private DateOfStarsEvent dateOfStarsEvent;
+    private DayOfWeekEvent dayOfWeekEvent;
 
     public OrderController() {
         this.inputView = new InputView();
@@ -32,6 +40,12 @@ public class OrderController {
 
         this.giftMenu = new GiftMenu(menuOrders.calculateTotalPrice());
         printGiftMenu(giftMenu.getName(), giftMenu.getQuantity());
+
+        this.christmasDiscount = new ChristmasEvent(visitDate);
+        this.dateOfStarsEvent = new DateOfStarsEvent(visitDate);
+        this.dayOfWeekEvent = new DayOfWeekEvent(visitDate, menuOrders.getMenuOrders());
+
+        calculateAndPrintDiscounts();
 
     }
 
@@ -61,4 +75,41 @@ public class OrderController {
         outputView.printGiftMenuInformation(giftName, quantity);
     }
 
+    private void calculateAndPrintDiscounts() {
+        outputView.benefitMessage();
+        if (!checkDiscounts()) {
+            outputView.printNoExist();
+            return;
+        }
+        printDiscountDetails();
+
+    }
+
+    private boolean checkDiscounts() {
+        return isDiscountAvailable(christmasDiscount.getChristmasDiscountPrice()) ||
+                isDiscountAvailable(dayOfWeekEvent.getWeekDayDiscount()) ||
+                isDiscountAvailable(dayOfWeekEvent.getWeekendDiscount()) ||
+                isDiscountAvailable(dateOfStarsEvent.getTotalDiscount()) ||
+                isDiscountAvailable(giftMenu.getPrice());
+    }
+
+    private boolean isDiscountAvailable(int discountAmount) {
+        return discountAmount > 0;
+    }
+
+    private void printDiscountDetails() {
+        printIfDiscountAvailable(CHRISTMAS_DATE_DISCOUNT,
+                christmasDiscount.getChristmasDiscountPrice());
+        printIfDiscountAvailable(WEEKDAY_DISCOUNT, dayOfWeekEvent.getWeekDayDiscount());
+        printIfDiscountAvailable(WEEKEND_DISCOUNT, dayOfWeekEvent.getWeekendDiscount());
+        printIfDiscountAvailable(SPECIAL_DISCOUNT, dateOfStarsEvent.getTotalDiscount());
+        printIfDiscountAvailable(GIFT_MENU_DISCOUNT, giftMenu.getPrice());
+    }
+
+    private void printIfDiscountAvailable(String discountName, int discountAmount) {
+        if (isDiscountAvailable(discountAmount)) {
+            outputView.printDiscountEvent(discountName, discountAmount);
+        }
+
+    }
 }

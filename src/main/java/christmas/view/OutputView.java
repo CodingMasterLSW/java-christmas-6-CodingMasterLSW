@@ -45,9 +45,9 @@ public class OutputView {
         printNewLine();
     }
 
-    public void printNullGiftMenu(){
+    public void printNullGiftMenu() {
         giftMenuMessage();
-        noExistGiftMenu();
+        printNoExist();
         printNewLine();
     }
 
@@ -60,12 +60,24 @@ public class OutputView {
         System.out.println(message);
     }
 
-    private void noExistGiftMenu(){
+    public void printNoExist() {
         System.out.println(NO_EXIST);
     }
 
+    public void benefitMessage() {
+        System.out.println(APPLY_BENEFIT_OUTPUT);
+    }
+
+
     public void printNewLine() {
         System.out.println();
+    }
+
+    public void printDiscountEvent(String eventName, int discountAmount){
+        if(discountAmount>0){
+            String message = String.format(DISCOUNT_FORMAT, eventName, discountAmount);
+            System.out.println(message);
+        }
     }
 
 
