@@ -12,11 +12,13 @@ public class DayOfWeekEvent {
 
     private final static int DAY_DISCOUNT_RATE = 2023;
     private int count;
-    private int totalDayDiscount;
+    private int weekDayDiscount;
+    private int weekendDiscount;
     private DayOfWeekUtils dayOfWeekUtils = new DayOfWeekUtils();
 
     public DayOfWeekEvent(int visitDate, List<MenuOrder> menuOrders) {
-        this.totalDayDiscount = 0;
+        this.weekDayDiscount = 0;
+        this.weekendDiscount = 0;
         applyDiscount(visitDate, menuOrders);
     }
 
@@ -29,7 +31,7 @@ public class DayOfWeekEvent {
         if (DayOfWeekUtils.isWeekend(visitDate)) {
             count = 0;
             findAllContainsMainMenu(menuOrders);
-            totalDayDiscount += calculateWeekendDiscount();
+            weekendDiscount += calculateWeekendDiscount();
         }
     }
 
@@ -37,7 +39,7 @@ public class DayOfWeekEvent {
         if (!DayOfWeekUtils.isWeekend(visitDate)) {
             count = 0;
             findAllContainsDessertMenu(menuOrders);
-            totalDayDiscount += calculateWeekendDiscount();
+            weekDayDiscount += calculateWeekendDiscount();
         }
     }
 
@@ -70,8 +72,11 @@ public class DayOfWeekEvent {
         return count * DAY_DISCOUNT_RATE;
     }
 
-    public int getTotalDiscount() {
-        return totalDayDiscount;
+    public int getWeekDayDiscount() {
+        return weekDayDiscount;
+    }
+    public int getWeekendDiscount(){
+        return weekendDiscount;
     }
 
 }

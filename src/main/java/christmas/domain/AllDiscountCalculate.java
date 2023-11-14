@@ -38,7 +38,8 @@ public class AllDiscountCalculate {
             allDiscountPrice += christmasEvent.getChristmasDiscountPrice();
         }
         allDiscountPrice += dateOfStarsEvent.getTotalDiscount();
-        allDiscountPrice += dayOfWeekEvent.getTotalDiscount();
+        allDiscountPrice += dayOfWeekEvent.getWeekDayDiscount();
+        allDiscountPrice += dayOfWeekEvent.getWeekendDiscount();
     }
 
 
