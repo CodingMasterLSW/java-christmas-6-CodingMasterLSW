@@ -96,5 +96,19 @@ public class OutputView {
         System.out.println(message);
     }
 
+    public void applyDiscountPriceMessage(int applyDiscount){
+        afterPaymentMessage();
+        printAfterPaymentMessage(applyDiscount);
+    }
+
+    private void printAfterPaymentMessage(int applyDiscount){
+        String message = String.format(AFTER_DISCOUNT_PAYMENT_PRICE_FORMAT, applyDiscount);
+        System.out.println(message);
+    }
+
+    private void afterPaymentMessage(){
+        System.out.println(AFTER_DISCOUNT_PAYMENT_PRICE);
+    }
+
 
 }

@@ -3,6 +3,7 @@ package christmas.controller;
 import static christmas.constant.OutputViewMessage.*;
 
 import christmas.domain.AllDiscountCalculate;
+import christmas.domain.ApplyDiscount;
 import christmas.domain.GiftMenu;
 import christmas.domain.MenuOrder;
 import christmas.domain.MenuOrders;
@@ -18,6 +19,7 @@ public class OrderController {
     private MenuOrders menuOrders;
     private GiftMenu giftMenu;
     private AllDiscountCalculate allDiscountCalculate;
+    private ApplyDiscount applyDiscount;
 
     public OrderController() {
         this.inputView = new InputView();
@@ -44,6 +46,9 @@ public class OrderController {
         calculateAndPrintDiscounts();
         int allBenefitsPrice = calculateAllBenefitsPrice();
         outputView.allBenefitPrice(allBenefitsPrice);
+
+        this.applyDiscount = new ApplyDiscount(visitDate, menuOrders);
+        outputView.applyDiscountPriceMessage(applyDiscount.getApplyDiscountPrice());
     }
 
     private void printMenuOrderSummary() {
