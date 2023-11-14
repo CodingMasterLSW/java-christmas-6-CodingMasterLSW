@@ -33,7 +33,7 @@ public class OrderController {
         inputView.printStartMessage();
         int visitDate = inputValidator.checkReadDate();
         this.menuOrders = inputValidator.checkReadMenuOrder();
-        outputView.printVisitDateWithNewLine(visitDate);
+        outputView.printVisitDateWithMonth(visitDate);
 
         printMenuOrderSummary();
         displayTotalPriceBeforeDiscount();
@@ -47,10 +47,10 @@ public class OrderController {
 
         calculateAndPrintDiscounts();
         int allBenefitsPrice = calculateAllBenefitsPrice();
-        outputView.allBenefitPrice(allBenefitsPrice);
+        outputView.printTotalBenefitPrice(allBenefitsPrice);
 
         this.applyDiscount = new ApplyDiscount(visitDate, menuOrders);
-        outputView.applyDiscountPriceMessage(applyDiscount.getApplyDiscountPrice());
+        outputView.printAppliedDiscountPriceMessage(applyDiscount.getApplyDiscountPrice());
 
         String badge = BenefitsBadge.getBadge(allBenefitsPrice);
         outputView.printBadgeMessage(badge);
@@ -64,7 +64,7 @@ public class OrderController {
 
     private void displayTotalPriceBeforeDiscount() {
         int totalPrice = menuOrders.calculateTotalPrice();
-        outputView.printBeforeDiscountPrice(totalPrice);
+        outputView.printOrderPriceBeforeDiscount(totalPrice);
         outputView.printNewLine();
     }
 
@@ -76,10 +76,10 @@ public class OrderController {
 
     private void printGiftMenu(String giftName, int quantity) {
         if (giftName == null || giftName.isEmpty()) {
-            outputView.printNullGiftMenu();
+            outputView.printNoGiftMenu();
             return;
         }
-        outputView.printGiftMenuInformation(giftName, quantity);
+        outputView.printGiftMenuDetails(giftName, quantity);
     }
 
     private void calculateAndPrintDiscounts() {

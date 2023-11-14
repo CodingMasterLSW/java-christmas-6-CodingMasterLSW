@@ -5,7 +5,7 @@ import static christmas.constant.OutputViewMessage.*;
 
 public class OutputView {
 
-    public void printVisitDateWithNewLine(int visitDate) {
+    public void printVisitDateWithMonth(int visitDate) {
         printVisitDate(visitDate);
         printNewLine();
     }
@@ -25,7 +25,7 @@ public class OutputView {
         System.out.println(formattedOrder);
     }
 
-    public void printBeforeDiscountPrice(int totalPrice) {
+    public void printOrderPriceBeforeDiscount(int totalPrice) {
         beforeDiscountPriceMessage();
         displayTotalPrice(totalPrice);
     }
@@ -38,13 +38,13 @@ public class OutputView {
         System.out.println(totalPrice);
     }
 
-    public void printGiftMenuInformation(String giftName, int quantity) {
+    public void printGiftMenuDetails(String giftName, int quantity) {
         giftMenuMessage();
         giftMenuInformation(giftName, quantity);
         printNewLine();
     }
 
-    public void printNullGiftMenu() {
+    public void printNoGiftMenu() {
         giftMenuMessage();
         printNoExist();
         printNewLine();
@@ -79,7 +79,7 @@ public class OutputView {
         }
     }
 
-    public void allBenefitPrice(int allBenefitPrice){
+    public void printTotalBenefitPrice(int allBenefitPrice){
         allBenefitPriceMessage();
         calculateAllBenefitPrice(allBenefitPrice);
         printNewLine();
@@ -99,7 +99,7 @@ public class OutputView {
         System.out.println(ALL_BENEFIT_PRICE_ZERO);
     }
 
-    public void applyDiscountPriceMessage(int applyDiscount){
+    public void printAppliedDiscountPriceMessage(int applyDiscount){
         afterPaymentMessage();
         printAfterPaymentMessage(applyDiscount);
         printNewLine();
