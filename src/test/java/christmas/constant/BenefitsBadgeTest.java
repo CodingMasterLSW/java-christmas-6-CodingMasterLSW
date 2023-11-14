@@ -14,19 +14,19 @@ public class BenefitsBadgeTest {
     @DisplayName("혜택금액에 따른 뱃지 증정")
     @MethodSource("provideTestTotalBenefitPrice")
     @ParameterizedTest
-    void 뱃지_증정_테스트(int totalBenefitPrice, BenefitsBadge benefitsBadge) {
+    void 뱃지_증정_테스트(int totalBenefitPrice, String benefitsBadge) {
         assertThat(BenefitsBadge.getBadge(totalBenefitPrice)).isEqualTo(benefitsBadge);
     }
 
     private static Stream<Arguments> provideTestTotalBenefitPrice() {
         return Stream.of(
                 Arguments.of(0, null),
-                Arguments.of(5000, STAR),
-                Arguments.of(9999, STAR),
-                Arguments.of(10000,TREE),
-                Arguments.of(19999,TREE),
-                Arguments.of(20000,SANTA),
-                Arguments.of(25000,SANTA)
+                Arguments.of(5000, "별"),
+                Arguments.of(9999, "별"),
+                Arguments.of(10000, "트리"),
+                Arguments.of(19999, "트리"),
+                Arguments.of(20000, "산타"),
+                Arguments.of(25000, "산타")
         );
     }
 }
