@@ -6,9 +6,6 @@ import christmas.domain.AllDiscountCalculate;
 import christmas.domain.GiftMenu;
 import christmas.domain.MenuOrder;
 import christmas.domain.MenuOrders;
-import christmas.domain.discount.ChristmasEvent;
-import christmas.domain.discount.DateOfStarsEvent;
-import christmas.domain.discount.DayOfWeekEvent;
 import christmas.validator.InputValidator;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -45,7 +42,8 @@ public class OrderController {
                 menuOrders.getMenuOrders());
 
         calculateAndPrintDiscounts();
-
+        int allBenefitsPrice = calculateAllBenefitsPrice();
+        outputView.allBenefitPrice(allBenefitsPrice);
     }
 
     private void printMenuOrderSummary() {
@@ -78,9 +76,11 @@ public class OrderController {
         outputView.benefitMessage();
         if (!checkDiscounts()) {
             outputView.printNoExist();
+            outputView.printNewLine();
             return;
         }
         printDiscountDetails();
+        outputView.printNewLine();
 
     }
 
@@ -110,5 +110,9 @@ public class OrderController {
             outputView.printDiscountEvent(discountName, discountAmount);
         }
 
+    }
+
+    private int calculateAllBenefitsPrice(){
+        return allDiscountCalculate.getAllDiscountPrice()+giftMenu.getPrice();
     }
 }

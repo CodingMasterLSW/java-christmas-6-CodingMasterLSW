@@ -15,5 +15,8 @@ public class OutputViewMessage {
     public static final String WEEKEND_DISCOUNT = "주말 할인";
     public static final String SPECIAL_DISCOUNT = "특별 할인";
     public static final String GIFT_MENU_DISCOUNT = "증정 이벤트";
+    public static final String ALL_BENEFIT_PRICE = "<총혜택 금액>";
+    public static final String ALL_BENEFIT_PRICE_FORMAT = "-%,d원";
+
 
 }

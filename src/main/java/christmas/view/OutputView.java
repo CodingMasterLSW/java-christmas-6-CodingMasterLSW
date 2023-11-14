@@ -80,5 +80,21 @@ public class OutputView {
         }
     }
 
+    public void allBenefitPrice(int allBenefitPrice){
+        allBenefitPriceMessage();
+        calculateAllBenefitPrice(allBenefitPrice);
+        printNewLine();
+
+    }
+
+    private void allBenefitPriceMessage(){
+        System.out.println(ALL_BENEFIT_PRICE);
+    }
+
+    private void calculateAllBenefitPrice(int allBenefitPrice){
+        String message = String.format(ALL_BENEFIT_PRICE_FORMAT, allBenefitPrice);
+        System.out.println(message);
+    }
+
 
 }
