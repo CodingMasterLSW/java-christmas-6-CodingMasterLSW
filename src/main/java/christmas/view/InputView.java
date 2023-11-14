@@ -12,7 +12,7 @@ public class InputView {
     public String readDate() {
         printVisitDateMessage();
         String input = userInput();
-        viewValidator.validateReadDate(input);
+        viewValidator.ensureValidDate(input);
         return input;
     }
 
@@ -20,7 +20,7 @@ public class InputView {
     public String readMenuOrder() {
         printOrderMessage();
         String input = userInput();
-        viewValidator.validateReadMenuOrder(input);
+        viewValidator.ensureValidMenuOrder(input);
         return input;
     }
 

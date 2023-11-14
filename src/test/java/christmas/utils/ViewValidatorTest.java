@@ -19,7 +19,7 @@ public class ViewValidatorTest {
     @ParameterizedTest
     void 예시와_다른_입력(String input) {
         assertThrows(IllegalArgumentException.class, () -> {
-            viewValidator.validateReadMenuOrder(input);
+            viewValidator.ensureValidMenuOrder(input);
         });
     }
 
@@ -28,7 +28,7 @@ public class ViewValidatorTest {
     void 입력_공백() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             String input = "";
-            viewValidator.validateReadMenuOrder(input);
+            viewValidator.ensureValidMenuOrder(input);
         });
         assertThat(exception.getMessage()).isEqualTo(NOT_NULL);
     }
@@ -38,7 +38,7 @@ public class ViewValidatorTest {
     @ParameterizedTest
     void 주문_메뉴_1_미만(String input){
         assertThrows(IllegalArgumentException.class, () ->{
-            viewValidator.validateReadMenuOrder(input);
+            viewValidator.ensureValidMenuOrder(input);
         });
     }
 

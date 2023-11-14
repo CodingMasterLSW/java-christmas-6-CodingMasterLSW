@@ -8,44 +8,44 @@ import java.util.Arrays;
 
 public class ViewValidator {
 
-    public void validateReadDate(String input) {
-        checkInputIsNotNull(input, NOT_NULL);
-        checkOnlyNumber(input, INVALID_DATE);
+    public void ensureValidDate(String input) {
+        validateNotNullOrEmpty(input, NOT_NULL);
+        validateContainsOnlyDigits(input, INVALID_DATE);
     }
 
-    public void validateReadMenuOrder(String input) {
-        checkInputIsNotNull(input, NOT_NULL);
-        validateSplitMenuItems(input);
+    public void ensureValidMenuOrder(String input) {
+        validateNotNullOrEmpty(input, NOT_NULL);
+        validateMenuOrderFormat(input);
     }
 
-    private void checkInputIsNotNull(String input, String errorMessage) {
+    private void validateNotNullOrEmpty(String input, String errorMessage) {
         if (input == null || input.isEmpty()) {
             throw new IllegalArgumentException(errorMessage);
         }
     }
 
-    private void checkOnlyNumber(String input, String errorMessage) {
+    private void validateContainsOnlyDigits(String input, String errorMessage) {
         if (!input.matches("\\d+")) {
             throw new IllegalArgumentException(errorMessage);
         }
     }
 
-    private void validateSplitMenuItems(String input) {
+    private void validateMenuOrderFormat(String input) {
         boolean isValidator = Arrays.stream(input.split(","))
-                .allMatch(this::validateFormMenuItem);
+                .allMatch(this::isValidMenuItemFormat);
 
         if (!isValidator) {
             throw new IllegalArgumentException(INVALID_ORDER);
         }
     }
 
-    private boolean validateFormMenuItem(String inputOrder) {
+    private boolean isValidMenuItemFormat(String inputOrder) {
         String[] parts = inputOrder.split("-");
-        return parts.length == 2 && isQuantityValid(parts[1]);
+        return parts.length == 2 && isValidQuantity(parts[1]);
     }
 
-    private boolean isQuantityValid(String OrderQuantity) {
-        checkOnlyNumber(OrderQuantity, INVALID_ORDER);
+    private boolean isValidQuantity(String OrderQuantity) {
+        validateContainsOnlyDigits(OrderQuantity, INVALID_ORDER);
         int quantity = Integer.parseInt(OrderQuantity);
         return quantity > 0;
     }

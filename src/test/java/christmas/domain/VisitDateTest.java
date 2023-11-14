@@ -25,7 +25,7 @@ public class VisitDateTest {
     void 입력이_null_인_경우() {
         assertThrows(IllegalArgumentException.class, () -> {
             String input = "";
-            viewValidator.validateReadDate(input);
+            viewValidator.ensureValidDate(input);
         });
     }
 
@@ -34,7 +34,7 @@ public class VisitDateTest {
     @ParameterizedTest
     void 입력값이_숫자가_아닐경우(String input){
         assertThrows(IllegalArgumentException.class, () -> {
-            viewValidator.validateReadDate(input);
+            viewValidator.ensureValidDate(input);
         });
     }
 
