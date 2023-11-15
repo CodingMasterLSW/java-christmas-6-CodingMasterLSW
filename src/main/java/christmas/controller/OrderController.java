@@ -15,9 +15,10 @@ import christmas.view.OutputView;
 
 public class OrderController {
 
+    private VisitDate visitDate;
     private InputValidator inputValidator;
-    private InputView inputView;
-    private OutputView outputView;
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
     private MenuOrders menuOrders;
     private GiftMenu giftMenu;
     private AllDiscountCalculate allDiscountCalculate;
@@ -25,36 +26,26 @@ public class OrderController {
     private BenefitsBadge benefitsBadge;
 
     public OrderController() {
-        this.inputView = new InputView();
         this.inputValidator = new InputValidator(inputView);
-        this.outputView = new OutputView();
     }
 
     public void start() {
         inputView.printStartMessage();
-        VisitDate visitDate = inputValidator.validateVisitDate();
-        this.menuOrders = inputValidator.validateMenuOrders();
-        outputView.printVisitDateWithMonth(visitDate);
-
+        processInput();
         printMenuOrderSummary();
         displayTotalPriceBeforeDiscount();
-
-        this.giftMenu = new GiftMenu(menuOrders.calculateTotalPrice());
-        printGiftMenu(giftMenu.getName(), giftMenu.getQuantity());
-
-        int totalPrice = menuOrders.calculateTotalPrice();
-        this.allDiscountCalculate = new AllDiscountCalculate(visitDate, totalPrice,
-                menuOrders.getMenuOrders());
-
+        processGiftMenu();
+        processDiscountCalculation();
         calculateAndPrintDiscounts();
-        int allBenefitsPrice = calculateAllBenefitsPrice();
-        outputView.printTotalBenefitPrice(allBenefitsPrice);
+        calculateAndPrintAllBenefitsPrice();
+        applyDiscountAndPrint();
+        printBadge();
+    }
 
-        this.applyDiscount = new ApplyDiscount(visitDate, menuOrders);
-        outputView.printAppliedDiscountPriceMessage(applyDiscount.getApplyDiscountPrice());
-
-        String badge = BenefitsBadge.getBadge(allBenefitsPrice);
-        outputView.printBadgeMessage(badge);
+    private void processInput() {
+        this.visitDate = inputValidator.validateVisitDate();
+        this.menuOrders = inputValidator.validateMenuOrders();
+        outputView.printVisitDateWithMonth(visitDate);
     }
 
     private void printMenuOrderSummary() {
@@ -67,6 +58,33 @@ public class OrderController {
         int totalPrice = menuOrders.calculateTotalPrice();
         outputView.printOrderPriceBeforeDiscount(totalPrice);
         outputView.printNewLine();
+    }
+
+    private void processGiftMenu() {
+        this.giftMenu = new GiftMenu(menuOrders.calculateTotalPrice());
+        printGiftMenu(giftMenu.getName(), giftMenu.getQuantity());
+    }
+
+    private void processDiscountCalculation() {
+        int totalPrice = menuOrders.calculateTotalPrice();
+        this.allDiscountCalculate = new AllDiscountCalculate(visitDate, totalPrice, menuOrders.getMenuOrders());
+    }
+
+
+    private void calculateAndPrintAllBenefitsPrice() {
+        int allBenefitsPrice = calculateAllBenefitsPrice();
+        outputView.printTotalBenefitPrice(allBenefitsPrice);
+    }
+
+    private void applyDiscountAndPrint() {
+        this.applyDiscount = new ApplyDiscount(visitDate, menuOrders);
+        outputView.printAppliedDiscountPriceMessage(applyDiscount.getApplyDiscountPrice());
+    }
+
+    private void printBadge() {
+        String badge = BenefitsBadge.getBadge(
+                allDiscountCalculate.getAllDiscountPrice() + giftMenu.getPrice());
+        outputView.printBadgeMessage(badge);
     }
 
     private void printAllMenuOrders() {
@@ -123,7 +141,7 @@ public class OrderController {
 
     }
 
-    private int calculateAllBenefitsPrice(){
-        return allDiscountCalculate.getAllDiscountPrice()+giftMenu.getPrice();
+    private int calculateAllBenefitsPrice() {
+        return allDiscountCalculate.getAllDiscountPrice() + giftMenu.getPrice();
     }
 }
