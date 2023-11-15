@@ -10,12 +10,12 @@ public class ViewValidator {
 
     private static final int VALIDATE_PART_LENGTH = 2;
 
-    public void ensureValidDate(String input) {
+    public void ensureValidDate(final String input) {
         validateNotNullOrEmpty(input, NOT_NULL);
         validateContainsOnlyDigits(input, INVALID_DATE);
     }
 
-    public void ensureValidMenuOrder(String input) {
+    public void ensureValidMenuOrder(final String input) {
         validateNotNullOrEmpty(input, NOT_NULL);
         validateMenuOrderFormat(input);
     }
@@ -41,7 +41,7 @@ public class ViewValidator {
         }
     }
 
-    private boolean isValidMenuItemFormat(String inputOrder) {
+    private boolean isValidMenuItemFormat(final String inputOrder) {
         String[] parts = inputOrder.split("-");
         return parts.length == VALIDATE_PART_LENGTH && isValidQuantity(parts[1]);
     }

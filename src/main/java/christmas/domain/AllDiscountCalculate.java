@@ -24,13 +24,13 @@ public class AllDiscountCalculate {
         minimumDiscountConditions(totalPrice, visitDate);
     }
 
-    private void initializeEvents(VisitDate visitDate, List<MenuOrder> menuOrders) {
+    private void initializeEvents(final VisitDate visitDate, final List<MenuOrder> menuOrders) {
         this.christmasEvent = new ChristmasEvent(visitDate);
         this.dayOfWeekEvent = new DayOfWeekEvent(visitDate, menuOrders);
         this.dateOfStarsEvent = new DateOfStarsEvent(visitDate);
     }
 
-    private void minimumDiscountConditions(int totalPrice, VisitDate visitDate) {
+    private void minimumDiscountConditions(final int totalPrice, final VisitDate visitDate) {
         if (totalPrice >= MINIMUM_DISCOUNT_CONDITIONS) {
             calculateDiscounts(visitDate);
         }

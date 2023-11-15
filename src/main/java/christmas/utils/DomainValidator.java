@@ -7,7 +7,6 @@ import static christmas.constant.ValidateErrorMessage.NOT_ONLY_DRINKS;
 
 import christmas.constant.StoreMenu;
 import christmas.domain.MenuOrder;
-import christmas.domain.VisitDate;
 import java.util.Arrays;
 import java.util.List;
 
