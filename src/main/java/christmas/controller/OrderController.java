@@ -17,16 +17,18 @@ public class OrderController {
 
     private VisitDate visitDate;
     private InputValidator inputValidator;
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
+    private InputView inputView;
+    private OutputView outputView;
     private MenuOrders menuOrders;
     private GiftMenu giftMenu;
     private AllDiscountCalculate allDiscountCalculate;
     private ApplyDiscount applyDiscount;
-    private BenefitsBadge benefitsBadge;
 
     public OrderController() {
+        this.inputView = new InputView();
+        this.outputView = new OutputView();
         this.inputValidator = new InputValidator(inputView);
+
     }
 
     public void start() {
@@ -144,4 +146,5 @@ public class OrderController {
     private int calculateAllBenefitsPrice() {
         return allDiscountCalculate.getAllDiscountPrice() + giftMenu.getPrice();
     }
+
 }
