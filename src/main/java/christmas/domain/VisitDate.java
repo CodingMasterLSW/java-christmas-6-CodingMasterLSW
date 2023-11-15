@@ -11,7 +11,7 @@ public class VisitDate {
 
     public VisitDate(String input) {
         int visitDate = convertInteger(input);
-        domainValidator.validateVisitDate(visitDate);
+        domainValidator.ensureValidVisitDate(visitDate);
         this.visitDate = visitDate;
     }
 

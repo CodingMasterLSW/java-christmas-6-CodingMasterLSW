@@ -18,7 +18,7 @@ public class DomainValidator {
     private final List<String> drinkMenus = Arrays.asList(StoreMenu.DRINK_MENU.getStoreMenus());
 
 
-    public void validateVisitDate(int visitDate) {
+    public void ensureValidVisitDate(int visitDate) {
         checkNumbersRange(visitDate);
     }
 
@@ -28,15 +28,15 @@ public class DomainValidator {
         }
     }
 
-    public void validateMenuOrder(List<MenuOrder> menus) {
-        validateNoExistMenu(menus);
-        validateDuplicateMenu(menus);
-        validateNotOnlyDrink(menus);
-        validateTotalQuantityAmount(menus);
+    public void ensureValidMenuOrders(List<MenuOrder> menus) {
+        checkNoExistMenu(menus);
+        checkDuplicateExistMenu(menus);
+        ensureNotOnlyDrink(menus);
+        checkMaxQuantityOver(menus);
 
     }
 
-    private void validateDuplicateMenu(List<MenuOrder> menus) {
+    private void checkDuplicateExistMenu(List<MenuOrder> menus) {
         long distinctMenuCount = menus.stream()
                 .map(MenuOrder::getMenu)
                 .distinct()
@@ -47,7 +47,7 @@ public class DomainValidator {
         }
     }
 
-    private void validateNoExistMenu(List<MenuOrder> menus) {
+    private void checkNoExistMenu(List<MenuOrder> menus) {
         List<String> allMenus = StoreMenuUtils.getAllMenus();
 
         for (MenuOrder order : menus) {
@@ -61,7 +61,7 @@ public class DomainValidator {
         }
     }
 
-    private void validateNotOnlyDrink(List<MenuOrder> menus) {
+    private void ensureNotOnlyDrink(List<MenuOrder> menus) {
         boolean allDrinks = menus.stream()
                 .allMatch(order -> drinkMenus.contains(order.getMenu()));
         if(allDrinks){
@@ -69,7 +69,7 @@ public class DomainValidator {
         }
     }
 
-    private void validateTotalQuantityAmount(List<MenuOrder> menus) {
+    private void checkMaxQuantityOver(List<MenuOrder> menus) {
         long totalQuantity = menus.stream()
                 .mapToInt(MenuOrder::getQuantity)
                 .sum();

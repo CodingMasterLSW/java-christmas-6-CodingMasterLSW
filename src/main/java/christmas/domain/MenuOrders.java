@@ -13,7 +13,7 @@ public class MenuOrders {
 
     public MenuOrders(String input) {
         this.menuOrders = menuOrderParser.parseOrders(input);
-        domainValidator.validateMenuOrder(menuOrders);
+        domainValidator.ensureValidMenuOrders(menuOrders);
     }
 
     public int calculateTotalPrice() {
