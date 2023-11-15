@@ -15,7 +15,7 @@ public class VisitDate {
         this.visitDate = visitDate;
     }
 
-    private int convertInteger(String input){
+    private int convertInteger(String input) {
         return Integer.parseInt(input);
     }
 
@@ -24,7 +24,7 @@ public class VisitDate {
         return String.valueOf(visitDate);
     }
 
-    public int getVisitDate(){
+    public int getVisitDate() {
         return visitDate;
     }
 }

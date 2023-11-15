@@ -34,7 +34,7 @@ public class GiftMenu {
         return price * quantity;
     }
 
-    public int getQuantity(){
+    public int getQuantity() {
         return quantity;
     }
 

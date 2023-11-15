@@ -23,12 +23,12 @@ public class InputValidator {
         }
     }
 
-    public MenuOrders validateMenuOrders(){
-        while (true){
-            try{
+    public MenuOrders validateMenuOrders() {
+        while (true) {
+            try {
                 String input = inputView.readMenuOrder();
                 return new MenuOrders(input);
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }

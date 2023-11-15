@@ -25,7 +25,7 @@ public class AllBenefit {
         this.totalBenefitsPrice += giftMenu.getPrice();
     }
 
-    public int getTotalBenefitsPrice(){
+    public int getTotalBenefitsPrice() {
         return totalBenefitsPrice;
     }
 }

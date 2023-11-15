@@ -76,7 +76,7 @@ public class DayOfWeekEvent {
         return weekDayDiscount;
     }
 
-    public int getWeekendDiscount(){
+    public int getWeekendDiscount() {
         return weekendDiscount;
     }
 

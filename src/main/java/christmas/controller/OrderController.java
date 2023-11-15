@@ -69,7 +69,8 @@ public class OrderController {
 
     private void processDiscountCalculation() {
         int totalPrice = menuOrders.calculateTotalPrice();
-        this.allDiscountCalculate = new AllDiscountCalculate(visitDate, totalPrice, menuOrders.getMenuOrders());
+        this.allDiscountCalculate = new AllDiscountCalculate(visitDate, totalPrice,
+                menuOrders.getMenuOrders());
     }
 
 

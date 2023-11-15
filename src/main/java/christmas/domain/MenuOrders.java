@@ -23,7 +23,7 @@ public class MenuOrders {
         return totalPrice;
     }
 
-    public List<MenuOrder> getMenuOrders(){
+    public List<MenuOrder> getMenuOrders() {
         return menuOrders;
     }
 

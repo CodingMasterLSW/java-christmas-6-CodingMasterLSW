@@ -16,7 +16,6 @@ public class InputView {
         return input;
     }
 
-
     public String readMenuOrder() {
         printOrderMessage();
         String input = userInput();

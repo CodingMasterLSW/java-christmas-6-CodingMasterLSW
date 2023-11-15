@@ -35,7 +35,7 @@ public class ChristmasEvent {
         }
     }
 
-    public int getChristmasDiscountPrice(){
+    public int getChristmasDiscountPrice() {
         return christmasDiscountPrice;
     }
 

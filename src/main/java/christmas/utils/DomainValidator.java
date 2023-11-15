@@ -65,7 +65,7 @@ public class DomainValidator {
     private void ensureNotOnlyDrink(List<MenuOrder> menus) {
         boolean allDrinks = menus.stream()
                 .allMatch(order -> drinkMenus.contains(order.getMenu()));
-        if(allDrinks){
+        if (allDrinks) {
             throw new IllegalArgumentException(NOT_ONLY_DRINKS);
         }
     }
