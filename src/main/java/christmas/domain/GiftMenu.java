@@ -5,6 +5,7 @@ import christmas.constant.StoreMenu;
 public class GiftMenu {
 
     private static final String GIFT_MENU_NAME = "샴페인";
+    private static final int PRESENT_CONDITION = 120000;
     private String name;
     private int price;
     private int quantity;
@@ -18,7 +19,7 @@ public class GiftMenu {
     }
 
     private void giftMenuEvent(int totalPrice) {
-        if (totalPrice >= 120000) {
+        if (totalPrice >= PRESENT_CONDITION) {
             this.name = GIFT_MENU_NAME;
             this.price = StoreMenu.getPriceOf(name);
             this.quantity = 1;
