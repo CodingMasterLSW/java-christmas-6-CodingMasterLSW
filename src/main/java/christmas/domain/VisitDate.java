@@ -19,6 +19,11 @@ public class VisitDate {
         return Integer.parseInt(input);
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(visitDate);
+    }
+
     public int getVisitDate(){
         return visitDate;
     }
