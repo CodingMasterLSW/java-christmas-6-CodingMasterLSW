@@ -19,8 +19,7 @@ public class MenuOrders {
     public int calculateTotalPrice() {
         int totalPrice = 0;
         for (MenuOrder order : menuOrders) {
-            int price = StoreMenu.getPriceOf(order.getMenu());
-            totalPrice += price * order.getQuantity();
+            totalPrice += order.calculatePrice();
         }
         return totalPrice;
     }

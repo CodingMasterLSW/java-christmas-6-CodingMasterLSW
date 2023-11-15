@@ -1,6 +1,8 @@
 package christmas.domain;
 
 
+import christmas.constant.StoreMenu;
+
 public class MenuOrder {
 
     private final String menu;
@@ -10,6 +12,10 @@ public class MenuOrder {
         this.menu = menu;
         this.quantity = quantity;
 
+    }
+
+    public int calculatePrice() {
+        return StoreMenu.getPriceOf(menu) * quantity;
     }
 
     public String getMenu() {
