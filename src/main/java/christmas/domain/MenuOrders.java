@@ -1,6 +1,5 @@
 package christmas.domain;
 
-import christmas.constant.StoreMenu;
 import christmas.utils.DomainValidator;
 import christmas.utils.MenuOrderParser;
 import java.util.List;

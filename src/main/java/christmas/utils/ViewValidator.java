@@ -8,6 +8,8 @@ import java.util.Arrays;
 
 public class ViewValidator {
 
+    private static final int VALIDATE_PART_LENGTH = 2;
+
     public void ensureValidDate(String input) {
         validateNotNullOrEmpty(input, NOT_NULL);
         validateContainsOnlyDigits(input, INVALID_DATE);
@@ -41,7 +43,7 @@ public class ViewValidator {
 
     private boolean isValidMenuItemFormat(String inputOrder) {
         String[] parts = inputOrder.split("-");
-        return parts.length == 2 && isValidQuantity(parts[1]);
+        return parts.length == VALIDATE_PART_LENGTH && isValidQuantity(parts[1]);
     }
 
     private boolean isValidQuantity(String OrderQuantity) {

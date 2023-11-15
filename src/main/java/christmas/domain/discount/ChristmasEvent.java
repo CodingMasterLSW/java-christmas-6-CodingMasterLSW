@@ -4,10 +4,12 @@ import christmas.domain.VisitDate;
 
 public class ChristmasEvent {
 
-    private final static int ChristmasDiscountRate = 100;
-    private final static int CHRISTMAS_DISCOUNT_START_DATE = 1;
-    private final static int CHRISTMAS_DISCOUNT_END_DATE = 25;
+    private static final int ChristmasDiscountRate = 100;
+    private static final int CHRISTMAS_DISCOUNT_START_DATE = 1;
+    private static final int CHRISTMAS_DISCOUNT_END_DATE = 25;
+    private static final int CHRISTMAS_SETTING_DISCOUNT_PRICE = 1000;
     private int christmasDiscountPrice;
+
 
     public ChristmasEvent(VisitDate visitDate) {
         this.christmasDiscountPrice = notDiscountPeriod(visitDate);
@@ -27,7 +29,7 @@ public class ChristmasEvent {
     }
 
     private void calculateChristmasDiscount(VisitDate visitDate) {
-        christmasDiscountPrice = 1000;
+        christmasDiscountPrice = CHRISTMAS_SETTING_DISCOUNT_PRICE;
         for (int i = 1; i < visitDate.getVisitDate(); i++) {
             christmasDiscountPrice += ChristmasDiscountRate;
         }
